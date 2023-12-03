@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.scss";
+import Topbar from "./layouts/topbar/topbar";
+import EventGrid from "./layouts/event_grid/event_grid";
+import CartContextProvider from "./context/cart_context/cart_context_provider.tsx";
+import IntersectingDatesContextProvider from "./context/intersecting_dates_context/intersecting_dates_context_provider.tsx";
+import SearchContextProvider from "./context/search_context/search_context_provider.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <IntersectingDatesContextProvider>
+      <CartContextProvider>
+        <SearchContextProvider>
+          <Topbar />
+          <div id="app_wrapper">
+            <EventGrid />
+          </div>
+        </SearchContextProvider>
+      </CartContextProvider>
+    </IntersectingDatesContextProvider>
+  );
 }
 
-export default App
+export default App;

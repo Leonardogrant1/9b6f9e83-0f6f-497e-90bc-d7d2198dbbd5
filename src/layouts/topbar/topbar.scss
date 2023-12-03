@@ -1,0 +1,44 @@
+@import '../../App.scss';
+
+
+#topbar_wrapper {
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;;
+
+    z-index: 5;
+    width: 100%;
+    background-color: $main_color;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: calc($padding_x * 2);
+    box-sizing: border-box;
+    justify-content: space-between;
+    svg {
+        margin: auto;
+        color: white;
+        }
+}
+
+#cart_icon_wrapper {
+
+    position: relative;
+}
+
+#badge_count {
+    background-color: red;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    
+    
+}
+
