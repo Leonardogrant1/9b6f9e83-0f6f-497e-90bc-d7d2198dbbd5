@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { Event } from "@lib/api/event";
 
 type CartContextValue = {
+  loaded: boolean;
   cartEvents: Event[];
   setCartEvents: React.Dispatch<React.SetStateAction<Event[]>>;
 
@@ -10,6 +11,7 @@ type CartContextValue = {
 };
 
 export const CartContext = createContext<CartContextValue>({
+  loaded: false,
   cartEvents: [],
   setCartEvents: () => {},
   showCart: false,

@@ -10,7 +10,7 @@ export default function EventGrid() {
   const [events, setEvents] = useState<Event[]>([]);
 
   const { intersectingDates } = useContext(IntersectingDatesContext);
-  const { cartEvents } = useContext(CartContext);
+  const { loaded, cartEvents } = useContext(CartContext);
 
   const { search } = useContext(SearchContext);
 
@@ -19,20 +19,23 @@ export default function EventGrid() {
   )[0];
 
   useEffect(() => {
-    const cartEventIds = cartEvents.map((e) => e._id);
+    // Make sture local storage was checked and initial load is complete
+    if (!loaded) return;
 
+    // get ids of events in cart and use them the filter them out from the
+    // search results
+
+    const cartEventIds = cartEvents.map((e) => e._id);
     Event.getAllEvents({ searchBy: search }).then((events) => {
-      // setTimeout(() => {
       setEvents(events.filter((e) => !cartEventIds.includes(e._id)));
-      // }, 200000);
     });
   }, [search, cartEvents]);
 
+  if (!loaded) return <h2>Loading</h2>;
   return (
     <>
       {current_date && (
         <div id="current_date">
-          {" "}
           <h2> {current_date.toFormat("DDD")} </h2>{" "}
         </div>
       )}

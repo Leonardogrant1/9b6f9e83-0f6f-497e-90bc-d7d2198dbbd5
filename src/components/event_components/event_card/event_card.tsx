@@ -19,6 +19,8 @@ export default function EventCard({ event }: EventCardProps) {
     IntersectingDatesContext
   );
 
+  console.log("CCCAAAAAAAAAAAAART", cartEvents);
+
   useEffect(() => {
     const options = {
       root: null,
@@ -93,7 +95,6 @@ export default function EventCard({ event }: EventCardProps) {
         <div className="padding-box flex-1">
           <p> | Start: {event.formattedStarttime} </p>
           <p> | End: {event.formattedEndtime} </p>
-          {event.date.toISO()}
         </div>
 
         <div
