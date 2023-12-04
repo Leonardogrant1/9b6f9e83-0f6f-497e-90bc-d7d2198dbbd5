@@ -1,16 +1,22 @@
 
+@import '../../App.scss';
+
 
 #event_grid_wrapper {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1300px;
     margin: auto;
     min-height: 100%;
+    padding: $padding_x;
+    
+    box-sizing: border-box;
 }
 
 .event_grid {
     width: 100%;
+    
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
 }
 
