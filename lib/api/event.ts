@@ -15,6 +15,7 @@ class Venue {
 }
 
 export class Event {
+  public _id!: string;
   public title!: string;
   public flyerFront!: string;
   public date!: DateTime;
@@ -26,6 +27,7 @@ export class Event {
   public venue!: Venue;
 
   public constructor(data: Record<string, any>) {
+    this._id = data._id;
     this.title = data.title;
     this.flyerFront = data.flyerFront;
     this.date = data.date;

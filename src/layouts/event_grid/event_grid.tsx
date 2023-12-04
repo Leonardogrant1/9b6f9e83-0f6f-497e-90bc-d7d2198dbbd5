@@ -4,12 +4,10 @@ import EventCard from "@src/components/event_components/event_card/event_card";
 import { Event } from "@lib/api/event";
 import { IntersectingDatesContext } from "@src/context/intersecting_dates_context/intersecting_dates_context";
 import { SearchContext } from "@src/context/search_context/search_context";
-import { Dialog } from "@mui/material";
 import { CartContext } from "@src/context/cart_context/cart_context";
 
 export default function EventGrid() {
   const [events, setEvents] = useState<Event[]>([]);
-  const [showDialog, setShowDialog] = useState<boolean>(false);
 
   const { intersectingDates } = useContext(IntersectingDatesContext);
   const { cartEvents } = useContext(CartContext);
@@ -21,12 +19,14 @@ export default function EventGrid() {
   )[0];
 
   useEffect(() => {
+    const cartEventIds = cartEvents.map((e) => e._id);
+
     Event.getAllEvents({ searchBy: search }).then((events) => {
       // setTimeout(() => {
-      setEvents(events);
+      setEvents(events.filter((e) => !cartEventIds.includes(e._id)));
       // }, 200000);
     });
-  }, [search]);
+  }, [search, cartEvents]);
 
   return (
     <>
@@ -45,28 +45,6 @@ export default function EventGrid() {
         </div>
         ;
       </div>
-
-      <Dialog
-        onClose={(e: React.MouseEvent) => setShowDialog(false)}
-        open={showDialog}
-        maxWidth="lg"
-      >
-        <div className="event_grid">
-          {(cartEvents || []).map((event) => (
-            <EventCard event={event} />
-          ))}
-        </div>
-
-        <button
-          className="rounded bg-[#232323] text-white p-2 w-full"
-          onClick={() => {
-            setShowDialog(false);
-          }}
-        >
-          {" "}
-          OK{" "}
-        </button>
-      </Dialog>
     </>
   );
 }
