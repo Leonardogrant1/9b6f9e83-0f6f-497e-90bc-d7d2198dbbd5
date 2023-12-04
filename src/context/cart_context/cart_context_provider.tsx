@@ -8,9 +8,12 @@ export default function CartContextProvider({
   children: React.ReactNode;
 }) {
   const [cartEvents, setCartEvents] = useState<Event[]>([]);
+  const [showCart, setShowCart] = useState<boolean>(false);
 
   return (
-    <CartContext.Provider value={{ cartEvents, setCartEvents }}>
+    <CartContext.Provider
+      value={{ cartEvents, setCartEvents, showCart, setShowCart }}
+    >
       {children}
     </CartContext.Provider>
   );
