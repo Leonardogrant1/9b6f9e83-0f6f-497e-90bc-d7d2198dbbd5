@@ -1,7 +1,7 @@
 @import '../../../App.scss';
 
 #event_card_wrapper {
-     width: 100%;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;;
     display: flex;
     flex-direction: column;
@@ -17,6 +17,9 @@
   
   
  
+.event-image {
+  aspect-ratio: 1 / 1.2;
+}
  
 
 

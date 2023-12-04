@@ -1,0 +1,39 @@
+@import "../../../App.scss";
+
+.cart-item {
+
+    width: 100%;
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+ 
+    
+    // & > div {
+    //     margin: 0 $padding_x;
+    // }
+    
+    
+}
+
+.data-wrapper {
+    display: flex;
+}
+
+.cart-item-info {
+    padding-left: $padding_x;
+    h4, p {
+        margin: 2px 0;
+    }
+
+
+}
+
+.cart-item-image-wrapper {
+    width: 55px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    
+}

@@ -1,0 +1,50 @@
+@import "../../App.scss";
+
+#cart {
+    display: flex;
+    flex-direction: column;
+    padding: $padding_x;
+    box-sizing: border-box;
+
+    ul {
+
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+        & > :not([hidden]) ~ :not([hidden]) {
+            --tw-space-y-reverse: 0;
+            margin-top: calc(1rem/* 16px */ * calc(1 - var(--tw-space-y-reverse)));
+            margin-bottom: calc(1rem/* 16px */ * var(--tw-space-y-reverse));
+        }
+    }
+}
+
+.items-start {
+    align-items: flex-start;
+    
+    
+        p:only-child {
+          text-align: center;
+          width: 100%;
+        }
+}
+
+
+#button-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-main {
+    color: white;
+    border-radius: 10px;
+    background-color: $main_color;
+}
+
+.btn-secondary {
+    margin-top: $padding_x;
+    border-radius: 10px;
+    border: 2px solid $main_color;
+    color: $main_color;
+}

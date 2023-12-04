@@ -1,6 +1,6 @@
 import { Event } from "@lib/api/event";
 import { IoLocationSharp } from "react-icons/io5";
-import { IoMdAdd } from "react-icons/io";
+import { IoMdAdd, IoMdRemove } from "react-icons/io";
 
 import "./event_card.scss";
 import EventImage from "../event_image/event_image";
@@ -18,8 +18,6 @@ export default function EventCard({ event }: EventCardProps) {
   const { intersectingDates, setIntersectingDates } = useContext(
     IntersectingDatesContext
   );
-
-  console.log("CCCAAAAAAAAAAAAART", cartEvents);
 
   useEffect(() => {
     const options = {
@@ -85,7 +83,10 @@ export default function EventCard({ event }: EventCardProps) {
         <div id="title_wrapper" className="padding-box">
           <h3 className="text-ellipsis">{event.title}</h3>
         </div>
-        <EventImage src={event.flyerFront} alt={event.title} />
+
+        <div className="event-image">
+          <EventImage src={event.flyerFront} alt={event.title} />
+        </div>
 
         <div className="flex-row items-center padding-box">
           <IoLocationSharp className="text-main" />
