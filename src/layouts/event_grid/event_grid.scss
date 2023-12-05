@@ -22,21 +22,3 @@
     gap: 20px;
 }
 
-.date-sticker {
-    width: 100%;
-    z-index: 3;
-    top: calc(-1 * $padding_x);
-    right: calc(-1 * $padding_x);
-    left: calc(-1 * $padding_x);
-    position: sticky;
-    padding: 20px;
-    transition: background-color 200ms;
-    box-sizing: border-box;
-
-
-    h2 {
-        margin: 0px;
-    }
-
-    
-}
