@@ -6,9 +6,8 @@ import { motion } from "framer-motion";
 
 import "./event_card.scss";
 import EventImage from "../event_image/event_image";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { CartContext } from "@src/context/cart_context/cart_context";
-import { IntersectingDatesContext } from "@src/context/intersecting_dates_context/intersecting_dates_context";
 import { SnackbarContext } from "@src/context/snackbar_context/snackbar_context";
 
 type EventCardProps = {
@@ -18,69 +17,8 @@ type EventCardProps = {
 export default function EventCard({ event }: EventCardProps) {
   const targetRef = useRef(null);
   const { cartEvents, setCartEvents } = useContext(CartContext);
-  const { intersectingDates, setIntersectingDates } = useContext(
-    IntersectingDatesContext
-  );
 
   const { setMessage } = useContext(SnackbarContext);
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
-
-    const addDate = () => {
-      if (
-        !event.startTime ||
-        intersectingDates.includes(event.startTime.startOf("day"))
-      )
-        return;
-
-      setIntersectingDates([
-        ...intersectingDates,
-        event.startTime.startOf("day"),
-      ]);
-    };
-
-    const removeDate = () => {
-      if (
-        !event.startTime ||
-        !intersectingDates.includes(event.startTime.startOf("day"))
-      )
-        return;
-
-      const newIntersectingDates = intersectingDates.filter(
-        (d) => d == event.startTime.startOf("day")
-      );
-
-      setIntersectingDates([...newIntersectingDates]);
-    };
-
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          addDate();
-        } else {
-          removeDate();
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, options);
-
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
-    }
-
-    // Cleanup the observer when the component unmounts
-    return () => {
-      observer.disconnect();
-
-      removeDate();
-    };
-  }, []); //
 
   return (
     <motion.div

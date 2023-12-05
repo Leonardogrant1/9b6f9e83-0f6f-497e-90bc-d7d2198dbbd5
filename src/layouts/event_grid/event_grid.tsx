@@ -2,10 +2,8 @@ import "./event_grid.scss";
 import { useContext, useEffect, useState } from "react";
 import EventCard from "@src/components/event_components/event_card/event_card";
 import { Event } from "@lib/api/event";
-import { IntersectingDatesContext } from "@src/context/intersecting_dates_context/intersecting_dates_context";
 import { SearchContext } from "@src/context/search_context/search_context";
 import { CartContext } from "@src/context/cart_context/cart_context";
-import { DateTime } from "luxon";
 import StickyDate from "../sticky_date/sticky_date";
 
 type EventDateDict = {
@@ -15,14 +13,9 @@ type EventDateDict = {
 export default function EventGrid() {
   const [eventsDict, setEventsDict] = useState<EventDateDict>({});
 
-  const { intersectingDates } = useContext(IntersectingDatesContext);
   const { loaded, cartEvents } = useContext(CartContext);
 
   const { search } = useContext(SearchContext);
-
-  const current_date = intersectingDates.sort(
-    (date_1, date_2) => date_2.toMillis() - date_1.toMillis()
-  )[0];
 
   useEffect(() => {
     // Make sture local storage was checked and initial load is complete
@@ -65,9 +58,7 @@ export default function EventGrid() {
           return (
             <>
               <StickyDate iso_string={date} />
-              {/* <div className="date-sticker">
-                <h2>{DateTime.fromISO(date).toFormat("DDD")} </h2>
-              </div> */}
+
               <div className="event_grid">
                 {events.map((event) => (
                   <EventCard event={event} />
