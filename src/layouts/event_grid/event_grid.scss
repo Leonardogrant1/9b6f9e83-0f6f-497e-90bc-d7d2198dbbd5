@@ -3,22 +3,41 @@
 
 
 #event_grid_wrapper {
-    position: relative;
     overflow: auto;
     width: 100%;
-    max-width: 1300px;
-    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     min-height: 100%;
-    padding: $padding_x;
+     
     height: auto;
     box-sizing: border-box;
+
+
+  
+
+    
+
 }
 
 .event_grid {
     width: 100%;
+    max-width: 1300px;
+    padding: $padding_x;
+    box-sizing: border-box;
     margin: 20px 0px 100px 0px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+
+    
+    
+    
+    
+    @media only screen and (max-width: 500px ) {
+        
+        grid-template-columns: 1fr;
+        
+    }
 }
 
