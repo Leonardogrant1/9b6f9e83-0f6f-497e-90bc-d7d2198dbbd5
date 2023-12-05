@@ -9,7 +9,7 @@ export default function StickyDate({ iso_string }: { iso_string: string }) {
   useEffect(() => {
     const options = {
       root: document.getElementById("event_grid_wrapper"),
-      rootMargin: "20px 0px 200px 0px",
+      rootMargin: "20px 0px 800px 0px",
       threshold: 0,
     };
 
