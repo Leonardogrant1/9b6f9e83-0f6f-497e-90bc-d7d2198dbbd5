@@ -39,12 +39,12 @@
 .btn-main {
     color: white;
     border-radius: 10px;
-    background-color: $main_color;
+    background-color: $primary_color;
 }
 
 .btn-secondary {
     margin-top: $padding_x;
     border-radius: 10px;
-    border: 2px solid $main_color;
-    color: $main_color;
+    border: 2px solid $primary_color;
+    color: $primary_color;
 }

@@ -1,7 +1,7 @@
 
 $padding_x: 12px;
-$main_color: blue;
-$secondary_color: rgb(12, 178, 219);
+$primary_color: blue;
+$secondary_color: rgb(28, 28, 143);
 $box_padding: 10px;
  
 
@@ -87,7 +87,7 @@ h2 {
 }
 
 .text-main {
-        color: $main_color;
+        color: $primary_color;
 }
 
 .text-white {
