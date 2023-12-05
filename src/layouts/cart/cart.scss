@@ -5,12 +5,15 @@
     flex-direction: column;
     padding: $padding_x;
     box-sizing: border-box;
+    
+
 
     ul {
 
         display: flex;
         flex-direction: column;
         padding: 0;
+         
 
         & > :not([hidden]) ~ :not([hidden]) {
             --tw-space-y-reverse: 0;
@@ -32,19 +35,49 @@
 
 
 #button-wrapper {
+    
+    margin-top: 40px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
+    gap: $padding_x;
+
+    @media only screen and (max-width: 500px ) {
+        flex-direction: column;
+        
+    
+         
+    }
+
+
+}
+
+
+@mixin button {
+    max-width: 300px;
+    flex: 1;
+    border-radius: 10px;
+
+
+    @media only screen and (max-width: 500px ) {
+    
+        max-width: none;
+    }
 }
 
 .btn-main {
+    @include button;
     color: white;
-    border-radius: 10px;
     background-color: $primary_color;
+    
 }
 
 .btn-secondary {
-    margin-top: $padding_x;
-    border-radius: 10px;
+     
+    @include button;
+
+    background-color: white;
     border: 2px solid $primary_color;
     color: $primary_color;
 }

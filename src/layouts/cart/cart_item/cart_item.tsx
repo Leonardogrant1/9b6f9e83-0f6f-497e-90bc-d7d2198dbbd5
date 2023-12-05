@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { CartContext } from "@src/context/cart_context/cart_context";
 import { IoMdRemove } from "react-icons/io";
 import "./cart_item.scss";
+import { SnackbarContext } from "@src/context/snackbar_context/snackbar_context";
 
 type CartItemProps = {
   event: Event;
@@ -11,6 +12,7 @@ type CartItemProps = {
 
 export default function CartItem({ event }: CartItemProps) {
   const { cartEvents, setCartEvents } = useContext(CartContext);
+  const { setMessage } = useContext(SnackbarContext);
 
   return (
     <li className="cart-item">
@@ -26,12 +28,13 @@ export default function CartItem({ event }: CartItemProps) {
       </div>
 
       <div
-        className="add_button"
+        className="remove-button"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           if (!cartEvents.includes(event)) return;
           setCartEvents([...cartEvents.filter((e) => e._id != event._id)]);
+          setMessage({ message: "Event removed" });
         }}
       >
         <IoMdRemove className="text-white" />

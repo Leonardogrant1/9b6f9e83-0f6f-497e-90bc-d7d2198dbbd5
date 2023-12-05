@@ -31,9 +31,26 @@
 }
 
 .cart-item-image-wrapper {
-    width: 55px;
+    min-width: 55px;
+    max-width: 55px;
+    height: 55px;
     aspect-ratio: 1;
     border-radius: 10px;
     overflow: hidden;
-    
+     
+     
+}
+
+.remove-button {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: $primary_color;
+    aspect-ratio: 1/1;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    align-self: flex-end;
+    margin: $padding_x;
 }

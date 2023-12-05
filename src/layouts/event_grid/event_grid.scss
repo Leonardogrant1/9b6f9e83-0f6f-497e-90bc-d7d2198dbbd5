@@ -3,31 +3,40 @@
 
 
 #event_grid_wrapper {
+    position: relative;
+    overflow: auto;
     width: 100%;
     max-width: 1300px;
     margin: auto;
     min-height: 100%;
     padding: $padding_x;
-    
+    height: auto;
     box-sizing: border-box;
 }
 
 .event_grid {
     width: 100%;
-    
+    margin: 20px 0px 100px 0px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
 }
 
-#current_date {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;;
+.date-sticker {
     width: 100%;
-    background-color: white;
     z-index: 3;
-    top: 0;
+    top: calc(-1 * $padding_x);
+    right: calc(-1 * $padding_x);
+    left: calc(-1 * $padding_x);
     position: sticky;
+    padding: 20px;
+    transition: background-color 200ms;
+    box-sizing: border-box;
+
+
     h2 {
-        text-align: center;
+        margin: 0px;
     }
+
+    
 }

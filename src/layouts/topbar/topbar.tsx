@@ -10,6 +10,8 @@ export default function Topbar() {
   return (
     <>
       <div id="topbar_wrapper">
+        <div id="logo_wrapper"></div>
+
         <Searchbar />
 
         <div

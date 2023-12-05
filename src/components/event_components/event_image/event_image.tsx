@@ -8,8 +8,6 @@ export default function EventImage(
 ) {
   const [hasErrored, setHasErrored] = useState(false);
 
-  const [hasLoaded, setHasLoaded] = useState(false);
-
   const emptyPlaceholder = (
     <div
       id="empty-placeholder"
@@ -21,13 +19,9 @@ export default function EventImage(
   );
 
   return (
-    <div
-      id="image_wrapper"
-      onLoad={() => setHasLoaded(true)}
-      onError={() => setHasErrored(true)}
-    >
+    <div id="image_wrapper" onError={() => setHasErrored(true)}>
       <Suspense fallback={<h2>Loading</h2>}>
-        {!!props.src ? <img {...props} /> : emptyPlaceholder}
+        {!!props.src && !hasErrored ? <img {...props} /> : emptyPlaceholder}
       </Suspense>
     </div>
   );
