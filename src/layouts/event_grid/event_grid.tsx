@@ -43,11 +43,6 @@ export default function EventGrid() {
   if (!loaded) return <h2>Loading</h2>;
   return (
     <>
-      {/* {current_date && (
-        <div id="current_date">
-          <h2> {current_date.toFormat("DDD")} </h2>{" "}
-        </div>
-      )} */}
       <div id="event_grid_wrapper">
         <h1 className="py-xl">Public Events</h1>
 
